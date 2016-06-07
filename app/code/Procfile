@@ -1,0 +1,1 @@
+web: ./chisel-bin/chisel_linux_amd64 server -v --port $PORT

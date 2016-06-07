@@ -1,0 +1,9 @@
+---
+applications:
+- name: predix-chisel-postgres
+  memory: 32M
+  instances: 1
+  stack: cflinuxfs2
+  buildpack: binary_buildpack
+  path: code
+  random-route: true
