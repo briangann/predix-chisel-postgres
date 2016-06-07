@@ -1,12 +1,12 @@
 # predix-chisel-postgres
 
-This package provides a pre-built chisel (See  https://github.com/jpillora/chisel) binary and config that will allow external access to Postgres within predix.io.
+This Cloud Foundry application allows you to connect to "internal" only services, specifically the Postgres service, but can be extended to others as well.
+
+Pre-built chisel (See  https://github.com/jpillora/chisel) binaries are included. Source code will be added to this repo so you can build the code yourself.
 
 There are 3 binaries included (Linux/OS X/Windows) which can be used as the server or client depending on arguments supplied.
 
-The code has an additional client flag for a proxy to be specified in case you are behind a corporate firewall.
-
-Source code will be added to this repo so you can build the code yourself.
+The codebase has an additional client flag for a proxy to be specified in case you are behind a corporate firewall.
 
 This method can be used to expose ANY service isolated by the predix.io environment (RabbitMQ/Logstash/etc).
 
