@@ -21,9 +21,6 @@ cf create-service postgres shared-nr postgres-chisel
 cd app
 cf push --no-start
 cf bind-service predix-chisel-postgres postgres-chisel
-cf env predix-chisel-postgres
-  get the IP of the postgres server
-  update code/Procfile
 cf restage predix-chisel-postgres
 ```
 
@@ -40,6 +37,8 @@ export DYLD_INSERT_LIBRARIES=""
 Use CF to get the URI of the deployed application bound to your postgres service instance. You will also need to get the IP address of the postgres server you are bound to.
 
 ```
+cf env predix-chisel-postgres
+
 {
  "VCAP_SERVICES": {
   "postgres": [
