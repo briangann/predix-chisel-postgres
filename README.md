@@ -2,7 +2,7 @@
 
 This Cloud Foundry application allows you to connect to "internal" only services, specifically the Postgres service, but can be extended to others as well.
 
-Pre-built chisel (See  https://github.com/jpillora/chisel) binaries are included. Source code will be added to this repo so you can build the code yourself.
+Pre-built chisel (See  https://github.com/jpillora/chisel) binaries are included. 
 
 There are 3 binaries included (Linux/OS X/Windows) which can be used as the server or client depending on arguments supplied.
 
@@ -11,6 +11,9 @@ The codebase has an additional client flag for a proxy to be specified in case y
 This method can be used to expose ANY service isolated by the predix.io environment (RabbitMQ/Logstash/etc).
 
 No security mechanisms are bypassed - everything is still over SSL, and credentials must be passed by your connecting client.
+
+Source code for the client that includes the proxy code can be built by cloning https://github.com/chromicant/chisel/tree/proxy
+If you are not behind a proxy, you can use the binary releases from the main chisel repo.
 
 ## Setup
 
