@@ -2,7 +2,7 @@
 
 This Cloud Foundry application allows you to connect to "internal" only services, specifically the Postgres service, but can be extended to others as well.
 
-Pre-built chisel (See  https://github.com/jpillora/chisel) binaries are included. 
+Pre-built chisel (See  https://github.com/jpillora/chisel) binaries are included.
 
 There are 3 binaries included (Linux/OS X/Windows) which can be used as the server or client depending on arguments supplied.
 
@@ -35,7 +35,56 @@ Run this in the shell before launching the client:
 export DYLD_INSERT_LIBRARIES=""
 ```
 
-## Connecting the client
+## Connecting the client (the easy way)
+
+Inside the bin folder, there is a script for connecting to your chisel server, invoking psql/mysql automatically. It will also detect if you have "https_proxy" set
+and pass the appropriate argument.
+
+On MacOS, you can use homebrew to install dependencies "jq" and "psqlodbc"
+
+```
+brew install psqlodbc
+brew install jq
+```
+
+Highly recommend using "cf-traveling-admin" from https://github.com/cloudfoundry-community/traveling-cf-admin
+
+```
+./bin/client_connect.sh APP_NAME
+```
+
+Here's an example:
+
+```
+$ ./bin/client_connect.sh predix-chisel-postgres
+2016/11/01 21:33:33 client: Connecting to wss://predix-chisel-postgres-nonsecretive-bioastronautics.run.aws-usw02-pr.ice.predix.io:443
+2016/11/01 21:33:33 client: 10.72.6.121:5432#1: Enabled
+2016/11/01 21:33:34 client: Fingerprint 6f:8d:b3:a2:7a:92:e5:03:e7:ec:e7:cb:17:b5:de:f2
+2016/11/01 21:33:34 client: Sending configurating
+2016/11/01 21:33:34 client: Connected (Latency 175.246893ms)
+===============================
+APP_GUID: eda21d05-46a9-4d0a-8fff-40145d57ceca
+APP_DOMAIN: https://predix-chisel-postgres-nonsecretive-bioastronautics.run.aws-usw02-pr.ice.predix.io
+
+postgres CREDENTIALS
+
+SERVICE NAME: postgres-bg
+SERVICE DATABASE: d9e523c2fa5614b979a11b1944b3b3202
+SERVICE USERNAME: MYUSERNAME
+SERVICE PASSWORD: MYPASSWORD
+
+LOCAL PORT: 15524
+REMOTE HOST: 10.72.6.121
+REMOTE PORT: 5432
+
+===============================
+2016/11/01 21:33:36 client: 10.72.6.121:5432#1: conn#1: Open
+psql (9.5.4, server 9.4.5)
+Type "help" for help.
+
+d9e523c2fa5614b979a11b1944b3b3202=>
+```
+## Connecting the client manually
 
 Use CF to get the URI of the deployed application bound to your postgres service instance. You will also need to get the IP address of the postgres server you are bound to.
 
