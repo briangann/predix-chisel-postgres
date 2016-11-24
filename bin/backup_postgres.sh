@@ -19,6 +19,15 @@ if [ "$1" == "" ]; then
   exit 1
 fi
 
+# find the full path to this script, then set our path to chisel binaries
+pushd $(dirname "${0}") > /dev/null
+basedir=$(pwd -L)
+# Use "pwd -P" for the path without links. man bash for more info.
+popd > /dev/null
+TOP_DIR="$(dirname ${basedir})"
+# finally, set the path where we can find chisel
+CLIENT_BASE_PATH="${TOP_DIR}/app/code/chisel-bin"
+
 APP_NAME=$1
 check_command cf
 check_command jq
@@ -94,7 +103,6 @@ connect_service(){
 }
 
 start_client(){
-  CLIENT_BASE_PATH="./app/code/chisel-bin"
   if [ "$(uname)" == 'Darwin' ]; then
     OS="Mac"
   elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
