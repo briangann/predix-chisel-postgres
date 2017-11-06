@@ -157,7 +157,7 @@ tunnelservice
 ```
 
 ## Connecting the client as a background service
-WITH SUPERVISORD - Running service perpetually on the background or Persistent connection to the DB
+WITH SUPERVISORD - Running service perpetually on the background or Persistent connection to the DB (http://supervisord.org/)
 1. Make sure you have Homebrew installed: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 2. Use Homebrew to install supervisord: brew install supervisord and brew services start supervisord will enable it to run at boot
 3. Clone the chisel client somewhere: git clone https://github.com/briangann/predix-chisel-postgres.git
