@@ -42,7 +42,7 @@ SERVICE_NAME=`echo $APP_ENV | jq -r '.system_env_json.VCAP_SERVICES | .[][0].nam
 CREDENTIALS=`echo $APP_ENV | jq '.system_env_json.VCAP_SERVICES | .[][0].credentials'`
 
 #REMOTE_HOST=`echo https://$APP_DOMAIN`
-REMOTE_HOST=`echo $CREDENTIALS | jq -r .host`
+REMOTE_HOST=`echo $CREDENTIALS | jq -r .hostname`
 REMOTE_PORT=`echo $CREDENTIALS | jq -r .port`
 SERVICE_USER=`echo $CREDENTIALS | jq -r .username`
 SERVICE_PASS=`echo $CREDENTIALS | jq -r .password`
